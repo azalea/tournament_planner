@@ -1,8 +1,11 @@
 # Tournament Results
 
 This is Project 2 of Full Stack Web Developer Nanodegree.
+
 Database schema is designed and implemented in tournament.sql. Two database views are used to store query results which can then be retrieved easily.
+
 APIs to access the database are implemented in tournament.py. 
+
 Tests are in tournament_test.py which have been implemented beforehand to facilitate test-driven development.
 
 ## Features:
