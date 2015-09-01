@@ -1,12 +1,10 @@
 -- Table definitions for the tournament project.
 --
--- Put your SQL 'create table' statements in this file; also 'create view'
--- statements if you choose to use it.
---
--- You can write comments in this file by starting them with two dashes, like
--- these lines here.
+-- Warning: executing this file will drop the existing tournament database
+-- Make sure to back it up if the data are critical
 
-
+-- start from an empty database
+drop database if exists tournament;
 create database tournament;
 \c tournament;
 
@@ -28,7 +26,8 @@ create table if not exists tournament_player (
     player_id integer references player(id) on delete cascade,
     primary key (tournament_id, player_id));
 
--- tournament_id column is needed to support more than one tournament per database
+-- tournament_id column is needed to support
+-- more than one tournament per database
 -- is_draw column is used to denote whether the match result is a draw,
 -- to allow a draw (a tied game) as result.
 create table if not exists tournament_match_result (
@@ -41,10 +40,13 @@ create table if not exists tournament_match_result (
 -- This view is to get the current tournament conveniently
 -- when supporting more than one tournament per database
 -- The current tournament is the one with max id
-create or replace view current_tournament as select * from tournament where id in (select max(id) from tournament);
+create or replace view current_tournament as
+    select * from tournament where id in (select max(id) from tournament);
 
 -- This view is to get the players in the current tournament conveniently
 -- when supporting more than one tournament per database
-create or replace view current_player as select * from player where id in (select player_id from tournament_player where tournament_id in (select max(id) from tournament)); 
+create or replace view current_player as
+    select * from player where id in
+        (select player_id from tournament_player where tournament_id in
+            (select max(id) from tournament));
 
- 
