@@ -2,11 +2,38 @@
 
 This is Project 2 of Full Stack Web Developer Nanodegree.
 
+This project provides a database backend and a Python API to create Swiss-system tournaments, register players, report match results, and pair up players for the next round based on current player standings.
+
 Database schema is designed and implemented in tournament.sql. Two database views are used to store query results which can then be retrieved easily.
 
 APIs to access the database are implemented in tournament.py. 
 
 Tests are in tournament_test.py which have been implemented beforehand to facilitate test-driven development.
+
+## Prerequisites
+
+To run this application, postgresql and the Python library psycopg2 has to be installed.
+
+Please follow the following instructions to install postgresql and psycopg2.
+
+https://wiki.postgresql.org/wiki/Detailed_installation_guides
+
+http://initd.org/psycopg/docs/install.html#installation
+
+## Installation
+
+Download this repository by clicking either "Clone in Desktop" or "Download ZIP" to the right. 
+
+In the Terminal,
+
+    # Go to the downloaded repository folder.
+    cd tournament_planner
+    # Set up the database
+    psql -f tournament/tournament.sql
+    # Run the test
+    python tournament_test.py
+
+If you see eight bulletin points, followed by "Success!  All tests pass!", that means the installation is successful.
 
 ## Features:
 
